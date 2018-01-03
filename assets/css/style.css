@@ -1,0 +1,9 @@
+ div[ng-app=Tasks], div[ng-controller=tasksController], md-sidenav {
+   height: 100%;
+ }
+ md-list-item > md-checkbox {
+   padding-right: 30px;
+ }
+ md-list-item > md-input-container {
+   height:30px;
+ }

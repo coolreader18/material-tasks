@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <title>Material Tasks</title>
+</head>
+<body>
+  <div ng-app="Tasks">
+    <div ng-controller="tasks">
+      <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" ng-click="toggleNav();">
+            <md-icon>menu</md-icon>
+          </md-button>
+          <h2 flex md-truncate>Material Tasks</h2>
+          <div ng-controller="auth">
+            <md-button class="md-raised" ng-click="authToggle()">{{ auth ? "Sign Out" : "Sign In" }}</md-button>
+          </div>
+        </div>
+      </md-toolbar>
+      <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+        <md-content>
+          <md-list ng-controller="tasklists">
+            <md-subheader>Tasklists</md-subheader>
+            <md-list-item
+            class="md-2-line"
+            ng-repeat="tasklist in tasklists"
+            ng-click="switchList(tasklist)">
+            {{ tasklist.title }}
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+    <div md-whiteframe=3>
+      <md-list>
+        <md-list-item class="md-no-proxy" ng-repeat="task in tasks.items">
+          <md-checkbox ng-model="!!task.completed"></md-checkbox>
+          <md-input-container>
+            <input type="text" ng-model="task.title">
+          </md-input-container>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-animate.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-aria.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-material.min.js"></script>
+<script type="text/javascript" src="assets/js/gapi.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
